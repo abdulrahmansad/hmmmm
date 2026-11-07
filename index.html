@@ -29,6 +29,37 @@
 @media(max-height:680px){.kicker{margin-bottom:5px}.hero,.title{margin:6px auto 12px}.copy{line-height:1.55}.action{margin-top:12px}.progress{bottom:12px}.scene .content{max-height:calc(100dvh - 95px)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
+<style>
+
+/* Storybook deluxe: bespoke scenes, no personal image assets */
+.story-filigree{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.novel .storybook{position:absolute;width:min(68vw,440px);height:min(60vh,470px);top:49%;left:50%;transform:translate(-50%,-50%) rotate(-7deg) perspective(850px) rotateY(-18deg);opacity:.24;filter:drop-shadow(0 35px 35px #000b)}
+.novel .storybook:before,.novel .storybook:after{content:"";position:absolute;top:0;height:100%;width:50%;background:repeating-linear-gradient(90deg,#806449 0 1px,transparent 1px 34px),linear-gradient(135deg,#e8c899,#967251);border:2px solid #b68e68;box-shadow:inset 0 0 55px #573e35}
+.novel .storybook:before{left:0;transform:skewY(4deg);border-radius:14px 1px 1px 14px}.novel .storybook:after{right:0;transform:skewY(-4deg);border-radius:1px 14px 14px 1px}
+.novel .storybook .spine{position:absolute;z-index:2;top:0;bottom:0;left:50%;width:2px;background:#fff6d5;box-shadow:0 0 28px 12px #ffdfaa66}
+.novel .hero{position:relative;z-index:4}
+.wish .wish-stars{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,#ffe6b7 1px,transparent 2px),radial-gradient(circle,#ffe2b1 1px,transparent 2px);background-size:77px 91px,109px 137px;background-position:8px 5px,41px 52px;opacity:.24;mask-image:linear-gradient(to bottom,#000,transparent 85%);animation:starglow 6s ease-in-out infinite alternate}
+.wish .wish-halo{position:absolute;width:560px;height:560px;max-width:120vw;max-height:120vw;border-radius:50%;border:1px solid #e8d9b83b;box-shadow:0 0 0 28px #ffdfab08,0 0 0 60px #ffdfab07,0 0 0 104px #ffdfab05;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.fight .gavel{position:absolute;right:4%;top:13%;font-family:Georgia,serif;font-size:clamp(90px,23vw,260px);opacity:.07;transform:rotate(-20deg);pointer-events:none}
+.pout .tear{position:absolute;background:#c8e8f5;border-radius:80% 0 80% 80%;width:24px;height:32px;transform:rotate(-35deg);top:-10%;left:15%;animation:tearfall 2.2s linear infinite;opacity:.6}.pout .tear:nth-child(2){left:75%;animation-delay:.75s}.pout .tear:nth-child(3){left:50%;animation-delay:1.4s}
+.secret .seal{position:absolute;top:15%;right:12%;height:130px;width:130px;border:4px double #e4be8675;border-radius:50%;color:#e4be8675;display:grid;place-items:center;font-family:Georgia,serif;font-size:16px;letter-spacing:.18em;transform:rotate(18deg);opacity:.3}
+.istanbul .stars{position:absolute;inset:0 0 38%;background-image:radial-gradient(circle,#fff 1px,transparent 1.8px);background-size:81px 89px;opacity:.23;animation:starglow 4s infinite alternate}
+.istanbul .skyline{position:absolute;top:51%;left:0;width:100%;height:20%;pointer-events:none;opacity:.75;background:linear-gradient(90deg,#18223b 0 10%,transparent 10% 13%,#192137 13% 23%,transparent 23% 25%,#131e32 25% 30%,transparent 30% 33%,#172439 33% 57%,transparent 57% 60%,#142039 60% 70%,transparent 70% 72%,#152037 72% 100%);clip-path:polygon(0 60%,8% 60%,8% 45%,14% 45%,14% 22%,15% 22%,15% 0,16% 22%,17% 22%,17% 55%,29% 55%,29% 23%,30% 5%,31% 23%,31% 55%,40% 55%,40% 42%,46% 42%,46% 58%,56% 58%,56% 30%,57% 0,58% 30%,58% 55%,68% 55%,68% 36%,78% 36%,78% 54%,85% 54%,85% 26%,86% 0,87% 26%,87% 56%,100% 56%,100% 100%,0 100%)}
+.driving .wheel{position:absolute;right:-10%;bottom:-29%;height:min(75vw,520px);width:min(75vw,520px);border:23px solid #080a0f;border-radius:50%;box-shadow:inset 0 0 0 9px #39404b,0 10px 60px #000;opacity:.58;transform:rotate(-20deg);animation:steer 7s ease-in-out infinite alternate}
+.driving .wheel:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:18px;transform:translateX(-50%);background:#131820}.driving .wheel:after{content:"";position:absolute;top:50%;left:0;right:0;height:18px;transform:translateY(-50%);background:#131820}
+.luxury .box3d{cursor:pointer;transition:filter .3s;user-select:none}.luxury .box3d:hover{filter:brightness(1.4)}.luxury .box3d.open{animation:boxshake .45s both}.luxury .box3d.open:before{transform:translateY(-44px) rotate(-12deg);transition:transform .65s cubic-bezier(.22,1,.36,1)}
+.luxury .shoe{display:none!important}.luxury .heel-art{height:125px;width:210px;margin:12px auto 0;position:relative;opacity:0;transform:translateY(25px) scale(.7);transition:opacity .7s var(--ease),transform .8s var(--ease);filter:drop-shadow(3px 16px 11px #0008)}.luxury .heel-art.visible{opacity:1;transform:translateY(0) scale(1)}
+.luxury .heel-art svg{width:100%;height:100%}.luxury .gift-hint{font-size:12px;color:#e5bd91;letter-spacing:.12em;margin:-8px auto 10px;text-transform:uppercase}
+.luxury .content>.copy{font-size:clamp(.98rem,3.2vw,1.28rem)}
+.biryani .plate{cursor:pointer;position:relative}.biryani .plate:hover{filter:brightness(1.2)}.biryani .plate:before{content:"";position:absolute;inset:16% 21%;border-radius:50%;background:radial-gradient(ellipse,#c07439 0 18%,#f2cd76 19% 42%,#855238 43% 47%,#f3d58a 48% 70%,#ad703e 71%);box-shadow:0 0 25px #ffc77966}.biryani .plate:after{content:"";position:absolute;inset:25% 28%;background:radial-gradient(circle at 20% 20%,#9b4526 0 7px,transparent 8px),radial-gradient(circle at 70% 70%,#5d8e46 0 5px,transparent 6px),radial-gradient(circle at 70% 30%,#98502e 0 9px,transparent 10px);transform:rotate(-8deg)}
+.song .final-ribbon{font-family:"Playfair Display",serif;font-style:italic;color:#e9c7b5;font-size:19px;margin-top:18px}
+.shooting-star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff4dc;box-shadow:0 0 10px 3px #f9cba2;z-index:1;opacity:0;pointer-events:none}
+.shooting-star.show{animation:shoot 1.3s ease-out forwards}
+@keyframes starglow{to{opacity:.5}}@keyframes steer{to{transform:rotate(19deg)}}@keyframes tearfall{to{top:115%;transform:rotate(15deg)}}@keyframes boxshake{20%{transform:rotate(6deg)}40%{transform:rotate(-7deg)}70%{transform:rotate(2deg)}}@keyframes shoot{10%{opacity:1}100%{transform:translate(250px,160px);opacity:0}}
+@media(max-width:600px){.secret .seal{right:-20px;top:12%;width:95px;height:95px;font-size:12px}.luxury .heel-art{height:95px}.driving .wheel{opacity:.25}.novel .storybook{opacity:.16}.wish .wish-halo{opacity:.4}}
+@media(prefers-reduced-motion:reduce){.shooting-star.show{display:none}.luxury .heel-art{transition:none}}
+
+</style>
 </head>
 <body>
 <div id="app">
@@ -73,5 +104,23 @@ play.addEventListener("click",async()=>{if(!audio.paused){audio.pause();play.tex
 audio.addEventListener("ended",()=>{play.textContent="play again ♪";record.classList.add("paused")});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&current>0)go(current-1)});
 })();
+</script>
+<script>
+
+(function(){
+"use strict";
+// Optional immersive decorations: zero remote dependencies and no uploaded photos.
+const novel=document.querySelector(".novel"),wish=document.querySelector(".wish"),pout=document.querySelector(".pout"),secret=document.querySelector(".secret"),istanbul=document.querySelector(".istanbul"),driving=document.querySelector(".driving"),fight=document.querySelector(".fight"),luxury=document.querySelector(".luxury"),song=document.querySelector(".song");
+function decor(parent,className,inner=""){const node=document.createElement("div");node.className=className;node.setAttribute("aria-hidden","true");node.innerHTML=inner;parent.prepend(node);return node}
+decor(novel,"storybook",'<div class="spine"></div>');decor(wish,"wish-stars");decor(wish,"wish-halo");decor(fight,"gavel","⚖");for(let i=0;i<3;i++)decor(pout,"tear");decor(secret,"seal","TOP<br>SECRET");decor(istanbul,"stars");decor(istanbul,"skyline");decor(driving,"wheel");
+const gift=luxury.querySelector(".box3d"),shoe=decor(luxury.querySelector(".content"),"heel-art",'<svg viewBox="0 0 300 170" role="img" aria-label="Illustrated black high heel"><defs><linearGradient id="shoeGold" x1="0" x2="1"><stop stop-color="#c39c55"/><stop offset=".5" stop-color="#f8e2a6"/><stop offset="1" stop-color="#92713c"/></linearGradient><linearGradient id="shoeBlack" x1="0" x2="1"><stop stop-color="#08080e"/><stop offset=".7" stop-color="#343039"/><stop offset="1" stop-color="#08070b"/></linearGradient></defs><path d="M36 133 Q66 130 85 113 Q98 104 118 115 L153 138 L246 143 Q267 143 270 153 L255 157 L139 155 Q110 152 87 132 Q74 140 46 143 Z" fill="url(#shoeBlack)" stroke="#5e5353" stroke-width="2"/><path d="M84 113 Q70 70 80 35 Q88 20 97 34 Q101 51 97 65 L101 115" fill="none" stroke="#27242a" stroke-width="9"/><path d="M144 143 L153 90 L169 94 L164 146 L178 146 L167 159 L142 158" fill="url(#shoeGold)"/><path d="M147 124 L174 113 M148 134 L172 142" stroke="#f5d99d" stroke-width="4"/><path d="M76 39 L98 39" stroke="#b8a9a1" stroke-width="5" stroke-linecap="round"/><path d="M113 115 Q150 100 174 121" fill="none" stroke="#16151d" stroke-width="11"/><ellipse cx="168" cy="159" rx="126" ry="4" fill="#000" opacity=".22"/></svg>');
+shoe.classList.remove("visible");const hint=document.createElement("div");hint.className="gift-hint";hint.textContent="tap the box to unwrap";gift.insertAdjacentElement("afterend",hint);gift.setAttribute("role","button");gift.setAttribute("tabindex","0");gift.setAttribute("aria-label","Open the luxury gift");
+function openGift(){gift.classList.add("open");shoe.classList.add("visible");hint.textContent="budget: loading… error";gift.setAttribute("aria-pressed","true")}
+gift.addEventListener("click",openGift);gift.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openGift()}});
+const record=song.querySelector(".record"), ribbon=document.createElement("div");ribbon.className="final-ribbon";ribbon.textContent="22 November. Every year, I'll still tease you.";song.querySelector(".content").append(ribbon);
+const smallScreen=matchMedia("(prefers-reduced-motion: reduce)");let starInterval=0;
+const observer=new MutationObserver(()=>{const active=istanbul.classList.contains("active");if(active&&!starInterval&&!smallScreen.matches){starInterval=setInterval(()=>{if(!istanbul.classList.contains("active"))return;const star=document.createElement("div");star.className="shooting-star show";star.style.left=Math.round(5+Math.random()*60)+"%";star.style.top=Math.round(5+Math.random()*35)+"%";istanbul.append(star);setTimeout(()=>star.remove(),1500)},2500)}else if(!active&&starInterval){clearInterval(starInterval);starInterval=0}});observer.observe(istanbul,{attributes:true,attributeFilter:["class"]});
+})();
+
 </script>
 </body></html>
