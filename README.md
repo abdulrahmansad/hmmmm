@@ -34,3 +34,8 @@ Single-file static site, no build step. Responsive CSS, accessible focus states,
 ## Notes
 
 The user's conversational copy is preserved without generic romantic rewriting. The Turkish line is used as an unattributed expression. This is a preview, not a deployed site until Pages is enabled.
+## Optional background soundtrack
+
+The site is wired for a quiet looping background soundtrack at `assets/kendine-iyi-bak.mp3` (about 8.5% player volume). Browsers require a user tap or key interaction before playback starts. The audio stops when the final personal song begins. The sound button toggles effects and background music together.
+
+**The copyrighted Ahmet Kaya track is NOT included.** Only add this audio if you have the necessary rights or license to publish it on a public GitHub Pages site. Without the file, the site continues silently. Do not assume owning a streaming subscription grants permission to redistribute an MP3.
