@@ -159,7 +159,7 @@ btw biraynai treat dene ke paise the but that is for hehe</div></div>
 <div class="copy flirt-line">birayani agar ab khila di pir suhaagraat ka plan kharab hojayga 👉👈</div>
 <div class="flirt-blush">· · ·</div>
 <button class="action next">acha last cheez →</button></div></section>
-<section class="scene song" data-index="9" aria-label="A song for Arshi"><div class="content"><h2 class="serif title">for you, betu jii.</h2><div class="record paused" id="record" aria-hidden="true"></div><div class="fine">i don't sing well… but this one's yours.</div><audio id="audio" preload="none" src="assets/arshi-song.mp3"></audio><button class="action" id="play">play my song ♪</button><div class="fine" id="song-message" role="status" aria-live="polite"></div><button class="action" id="restart">phir se shuru? ↺</button></div></section>
+<section class="scene song" data-index="9" aria-label="A song for Arshi"><div class="content"><h2 class="serif title">for you, betu jii.</h2><div class="record paused" id="record" aria-hidden="true"></div><div class="fine">i don't sing well… but this one's yours.</div><audio id="background-music" src="assets/kendine-iyi-bak.mp3" preload="none" loop></audio><audio id="audio" preload="none" src="assets/arshi-song.mp3"></audio><button class="action" id="play">play my song ♪</button><div class="fine" id="song-message" role="status" aria-live="polite"></div><button class="action" id="restart">phir se shuru? ↺</button></div></section>
 <nav class="progress" id="progress" aria-label="Story progress"></nav><div class="footnote">made with too much overthinking</div>
 </div>
 <script>
@@ -174,7 +174,7 @@ document.querySelector("#translate").addEventListener("click",()=>{document.quer
 document.querySelector("#restart").addEventListener("click",()=>go(0));
 document.querySelector("#sound").addEventListener("click",e=>{muted=!muted;e.currentTarget.textContent=muted?"♪":"♫";e.currentTarget.setAttribute("aria-label",muted?"Enable effects":"Mute effects");beep()});
 const audio=document.querySelector("#audio"),play=document.querySelector("#play"),message=document.querySelector("#song-message"),record=document.querySelector("#record");
-play.addEventListener("click",async()=>{if(!audio.paused){audio.pause();play.textContent="play my song ♪";record.classList.add("paused");return}try{await audio.play();message.textContent="";play.textContent="pause";record.classList.remove("paused")}catch{message.textContent="The song isn't uploaded yet. Add assets/arshi-song.mp3 when it's ready.";record.classList.add("paused")}});
+play.addEventListener("click",async()=>{if(!audio.paused){audio.pause();play.textContent="play my song ♪";record.classList.add("paused");return}try{await audio.play();document.querySelector("#background-music")?.pause();window.__hmmmmFinalSongStarted=true;message.textContent="";play.textContent="pause";record.classList.remove("paused")}catch{message.textContent="The song isn't uploaded yet. Add assets/arshi-song.mp3 when it's ready.";record.classList.add("paused")}});
 audio.addEventListener("ended",()=>{play.textContent="play again ♪";record.classList.add("paused")});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&current>0)go(current-1)});
 })();
@@ -205,4 +205,44 @@ const gift=document.querySelector("#luxury-gift"),reveal=document.querySelector(
 gift.addEventListener("click",()=>{if(opened)return;opened=true;gift.classList.add("opening");hint.classList.add("hidden");window.setTimeout(()=>reveal.classList.remove("hidden"),460);window.setTimeout(()=>apology.classList.remove("hidden"),1350);window.setTimeout(()=>{dialogue.classList.remove("hidden");next.classList.remove("hidden")},2400)});
 })();
 
-</script></body></html>
+</script>
+<script>
+(()=>{
+"use strict";
+// Music starts only after a real user gesture (mobile autoplay restriction).
+// Supply a legally licensed track at assets/kendine-iyi-bak.mp3.
+// The UI stays usable if the optional audio file is missing.
+const bg=document.querySelector("#background-music");
+const toggle=document.querySelector("#sound");
+bg.volume=0.085;
+let allowed=true, started=false, unavailable=false;
+async function start(){
+ if(!allowed||started||unavailable||window.__hmmmmFinalSongStarted)return;
+ try{
+   await bg.play();
+   started=true;
+ }catch(err){
+   // Missing asset or browser refusal: don't interrupt the story.
+   unavailable=true;
+ }
+}
+document.addEventListener("pointerdown",e=>{
+ if(e.target.closest("#sound,#play,#restart"))return;
+ start();
+},{passive:true});
+document.addEventListener("keydown",e=>{
+ if(e.key==="Enter"||e.key===" "||e.key==="ArrowRight")start();
+});
+toggle.addEventListener("click",()=>{
+ allowed=!allowed;
+ if(!allowed){bg.pause();}
+ else if(!window.__hmmmmFinalSongStarted){unavailable=false;start();}
+});
+document.querySelector("#restart").addEventListener("click",()=>{
+ bg.pause();bg.currentTime=0;started=false;unavailable=false;
+ window.__hmmmmFinalSongStarted=false;
+});
+document.querySelector("#audio").addEventListener("play",()=>{bg.pause();window.__hmmmmFinalSongStarted=true});
+})();
+</script>
+</body></html>
