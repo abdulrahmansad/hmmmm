@@ -66,8 +66,8 @@
 .intro-title{font-family:"DM Sans",sans-serif!important;font-size:clamp(3rem,10vw,7rem)!important;font-weight:700!important;font-style:normal!important;letter-spacing:-.08em!important;line-height:1.08!important;text-shadow:none!important;white-space:normal}
 .intro-title span{display:block;color:#f0cc99;font-family:"Playfair Display",Georgia,serif;font-weight:400;font-style:italic;letter-spacing:-.055em}
 .novel .storybook{opacity:.15}.novel .openbook{display:none}
-.fight .content{transition:filter .5s,transform .5s}.fight:has(.verdict-screen:not(.hidden)) .content{filter:blur(7px);transform:scale(.96);pointer-events:none}
-.verdict-screen{position:absolute;z-index:80;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:25px 18px;gap:16px;animation:verdictEnter .55s cubic-bezier(.19,1,.22,1)}
+.fight .content{transition:filter .5s,transform .5s}.fight:has(.verdict-screen:not(.hidden)) .content> :not(.verdict-screen){filter:blur(7px);transform:scale(.96);pointer-events:none}
+.verdict-screen{position:fixed;z-index:100;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:25px 18px;gap:16px;animation:verdictEnter .55s cubic-bezier(.19,1,.22,1)}
 .verdict-screen.correct{background:radial-gradient(circle at 50% 35%,#24664a,#0a271b 74%);color:#f1fff5}
 .verdict-screen.wrong{background:radial-gradient(circle at 50% 35%,#a63839,#3f101b 75%);color:#fff0f0}
 .verdict-stamp{border:3px solid currentColor;border-radius:50%;width:90px;height:90px;display:grid;place-items:center;font-size:45px;font-weight:800;box-shadow:0 0 0 12px #ffffff10;transform:rotate(-8deg)}
@@ -117,27 +117,27 @@
 <body>
 <div id="app">
 <header class="topbar"><span>hmmmm <span aria-hidden="true">✦</span></span><span id="count">01 / 10</span><button id="sound" type="button" title="Toggle sound" aria-label="Toggle sound">♪</button></header>
-<section class="scene novel active" data-index="0" aria-label="A strange beginning"><div class="orbit"></div><div class="openbook" aria-hidden="true">❧</div><div class="content enter"><div class="kicker">a story that shouldn't exist</div><h1 class="hero intro-title">Marah <span>Jamela?</span></h1><div class="fine">hmmmm…</div><button class="action primary next">aage dekho →</button></div></section>
-<section class="scene wish" data-index="1" aria-label="Birthday wishes"><div class="content"><div class="kicker">22 • 11 • 2007</div><h2 class="serif title">madem ji hmm</h2><div class="copy">aaj ka din its 22 11 aap ka janamdin haha so happy birthday maybe acha just joking happy birthday
+<section class="scene novel active" data-index="0" aria-label="A strange beginning"><div class="orbit"></div><div class="openbook" aria-hidden="true">❧</div><div class="content enter"><h1 class="hero intro-title">Marah <span>Jamela?</span></h1><div class="fine">hmmmm…</div><button class="action primary next">aage dekho →</button></div></section>
+<section class="scene wish" data-index="1" aria-label="Birthday wishes"><div class="content"><h2 class="serif title">madem ji hmm</h2><div class="copy">aaj ka din its 22 11 aap ka janamdin haha so happy birthday maybe acha just joking happy birthday
 
 i hope aap ke sare wishes poore ho allah aap ko khushiya de and aap ki hifazat karen and yeah aap ko ache kamo ki tofeeq de and ghalat chizo se door rakhe aallah aap ki aims achive karen and jo parai kar rahi ho i wish aap ko iss main kamyab hota huwa dekhun
 
 btw betu ji i know tum ye dua ki wajah se pir se ladho gi haha</div><button class="action next">acha aage →</button></div></section>
-<section class="scene fight" data-index="2" aria-label="The argument"><div class="rings"></div><div class="content"><div class="kicker">the great investigation</div><h2 class="serif title">humesha ladai ladai</h2><div class="copy">and ab bologi main ghalat kaam karti hoo
+<section class="scene fight" data-index="2" aria-label="The argument"><div class="rings"></div><div class="content"><h2 class="serif title">humesha ladai ladai</h2><div class="copy">and ab bologi main ghalat kaam karti hoo
 
 Ab bologi main ladhti hoon ?
 
 tbh bacha jii i have a question hum dono bohat ladhte hain i agree we fight alot
 
 kon ghalat hota hain</div><div class="choice-row"><button class="choice" data-answer="me">me</button><button class="choice" data-answer="you">you</button></div><div class="response hidden" id="fight-answer" role="status" aria-live="polite"></div><button class="action next hidden" id="fight-next">bas bas aage →</button><div class="verdict-screen hidden" id="verdict-screen" role="dialog" aria-modal="true" aria-labelledby="verdict-title"><div class="verdict-stamp" id="verdict-stamp">?</div><div class="verdict-label" id="verdict-label"></div><h3 id="verdict-title"></h3><button class="verdict-next" id="verdict-next">acha aage →</button></div></div></section>
-<section class="scene pout" data-index="3" aria-label="The reaction"><div class="doodle" aria-hidden="true">:(</div><div class="content"><div class="kicker">emergency detected</div><h2 class="serif huge">muuh<br>banaliya 😭</h2><p class="fine">...</p></div></section>
-<section class="scene secret" data-index="4" aria-label="A secret confession"><div class="spotlight"></div><div class="content"><div class="kicker">strictly confidential</div><h2 class="serif title">okay thik hain maan leta hoon aaj main ghalat hota hoon</h2><span class="whisper">but kisis ko batana nahi</span><button class="action next">promise? →</button></div></section>
-<section class="scene istanbul" data-index="5" aria-label="A Turkish poem"><div class="moon"></div><div class="bridge"></div><div class="water"></div><div class="content"><div class="glass"><div class="kicker">istanbul, somewhere in another story</div><p class="quote">İnsan iki göze âşık olur, sonra bütün dünyaya kör olur.</p><button class="action" id="translate">translate aap karenge hehe</button><div class="translation hidden" id="translation">One falls in love with two eyes, and then becomes blind to the whole world.</div></div><button class="action next">chalo ab →</button></div></section>
-<section class="scene driving" data-index="6" aria-label="Driving school"><div class="highway"></div><div class="lane"></div><div class="content"><div class="kicker"><span class="alert">WARNING: DRIVING SCHOOL</span></div><h2 class="serif title">muhtarma...</h2><div class="copy">wese car chalana sikhlo warna muhtarma time ayga time mujh se sikho gi pir think beta itna maar maar maar maar maaar maaar ke sikhawga so i would love to advice you ki bacha ji khud se sikhlo mere fatehpur ane se pehle</div><button class="action next">samjh gayi? →</button></div></section>
+<section class="scene pout" data-index="3" aria-label="The reaction"><div class="doodle" aria-hidden="true">:(</div><div class="content"><h2 class="serif huge">muuh<br>banaliya 😭</h2><p class="fine">...</p></div></section>
+<section class="scene secret" data-index="4" aria-label="A secret confession"><div class="spotlight"></div><div class="content"><h2 class="serif title">okay thik hain maan leta hoon aaj main ghalat hota hoon</h2><span class="whisper">but kisis ko batana nahi</span><button class="action next">promise? →</button></div></section>
+<section class="scene istanbul" data-index="5" aria-label="A Turkish poem"><div class="moon"></div><div class="bridge"></div><div class="water"></div><div class="content"><div class="glass"><p class="quote">İnsan iki göze âşık olur, sonra bütün dünyaya kör olur.</p><button class="action" id="translate">translate aap karenge hehe</button><div class="translation hidden" id="translation">One falls in love with two eyes, and then becomes blind to the whole world.</div></div><button class="action next">chalo ab →</button></div></section>
+<section class="scene driving" data-index="6" aria-label="Driving school"><div class="highway"></div><div class="lane"></div><div class="content"><h2 class="serif title">muhtarma...</h2><div class="copy">wese car chalana sikhlo warna muhtarma time ayga time mujh se sikho gi pir think beta itna maar maar maar maar maaar maaar ke sikhawga so i would love to advice you ki bacha ji khud se sikhlo mere fatehpur ane se pehle</div><button class="action next">samjh gayi? →</button></div></section>
 <section class="scene luxury" data-index="7" aria-label="The YSL gift reveal">
 <div class="runway-orb" aria-hidden="true"></div>
 <div class="content luxe-content">
-<div class="kicker">private collection · for madam ji</div>
+
 <h2 class="luxe-headline">A little something<br><em>for you.</em></h2>
 <div class="gift-stage" id="gift-stage">
 <button class="luxury-gift" id="luxury-gift" type="button" aria-label="Open your gift"><span class="lid"></span><span class="ribbon-v"></span><span class="ribbon-h"></span><span class="gift-tag">FOR ARSHI</span></button>
@@ -153,13 +153,13 @@ btw biraynai treat dene ke paise the but that is for hehe</div></div>
 </div></section>
 <section class="scene biryani flirty" data-index="8" aria-label="A mischievous confession">
 <div class="flirt-glow"></div><div class="flirt-curtain left"></div><div class="flirt-curtain right"></div>
-<div class="content flirt-content"><div class="kicker">about that biryani treat…</div>
+<div class="content flirt-content">
 <div class="little-envelope" aria-hidden="true"><span>✉</span><small>CONFIDENTIAL</small></div>
 <h2 class="serif title">ek choti si baat…</h2>
 <div class="copy flirt-line">birayani agar ab khila di pir suhaagraat ka plan kharab hojayga 👉👈</div>
 <div class="flirt-blush">· · ·</div>
 <button class="action next">acha last cheez →</button></div></section>
-<section class="scene song" data-index="9" aria-label="A song for Arshi"><div class="content"><div class="kicker">one last thing</div><h2 class="serif title">for you, betu jii.</h2><div class="record paused" id="record" aria-hidden="true"></div><div class="fine">i don't sing well… but this one's yours.</div><audio id="audio" preload="none" src="assets/arshi-song.mp3"></audio><button class="action" id="play">play my song ♪</button><div class="fine" id="song-message" role="status" aria-live="polite"></div><button class="action" id="restart">phir se shuru? ↺</button></div></section>
+<section class="scene song" data-index="9" aria-label="A song for Arshi"><div class="content"><h2 class="serif title">for you, betu jii.</h2><div class="record paused" id="record" aria-hidden="true"></div><div class="fine">i don't sing well… but this one's yours.</div><audio id="audio" preload="none" src="assets/arshi-song.mp3"></audio><button class="action" id="play">play my song ♪</button><div class="fine" id="song-message" role="status" aria-live="polite"></div><button class="action" id="restart">phir se shuru? ↺</button></div></section>
 <nav class="progress" id="progress" aria-label="Story progress"></nav><div class="footnote">made with too much overthinking</div>
 </div>
 <script>
