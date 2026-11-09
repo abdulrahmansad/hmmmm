@@ -116,7 +116,7 @@
 </style></head>
 <body>
 <div id="app">
-<header class="topbar"><span>hmmmm <span aria-hidden="true">✦</span></span><span id="count">01 / 10</span><button id="sound" type="button" title="Toggle sound" aria-label="Toggle sound">♪</button></header>
+<header class="topbar"><span>hmmmm <span aria-hidden="true">✦</span></span><span id="count">01 / 10</span><button id="sound" type="button" title="Toggle sound" aria-label="Mute sound">♫</button></header>
 <section class="scene novel active" data-index="0" aria-label="A strange beginning"><div class="orbit"></div><div class="openbook" aria-hidden="true">❧</div><div class="content enter"><h1 class="hero intro-title">Marah <span>Jamela?</span></h1><div class="fine">hmmmm…</div><button class="action primary next">aage dekho →</button></div></section>
 <section class="scene wish" data-index="1" aria-label="Birthday wishes"><div class="content"><h2 class="serif title">madem ji hmm</h2><div class="copy">aaj ka din its 22 11 aap ka janamdin haha so happy birthday maybe acha just joking happy birthday
 
@@ -164,7 +164,7 @@ btw biraynai treat dene ke paise the but that is for hehe</div></div>
 </div>
 <script>
 (()=>{"use strict";
-const scenes=[...document.querySelectorAll(".scene")],progress=document.querySelector("#progress"),count=document.querySelector("#count");let current=0,timer=null,muted=true,audioCtx;
+const scenes=[...document.querySelectorAll(".scene")],progress=document.querySelector("#progress"),count=document.querySelector("#count");let current=0,timer=null,muted=false,audioCtx;
 scenes.forEach((_,i)=>{const dot=document.createElement("span");dot.className="dot"+(i===0?" on":"");progress.append(dot)});
 function beep(){if(muted)return;try{audioCtx ||= new(window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(audioCtx.destination);o.type="sine";o.frequency.setValueAtTime(440,audioCtx.currentTime);o.frequency.exponentialRampToValueAtTime(660,audioCtx.currentTime+.13);g.gain.setValueAtTime(.015,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.17);o.start();o.stop(audioCtx.currentTime+.18)}catch(e){}}
 function go(n){clearTimeout(timer);if(n<0||n>=scenes.length)return;const prev=scenes[current];prev.classList.remove("active");prev.querySelector(".content")?.classList.remove("enter");current=n;scenes[current].classList.add("active");const c=scenes[current].querySelector(".content");c?.scrollTo(0,0);void c?.offsetWidth;c?.classList.add("enter");count.textContent=String(current+1).padStart(2,"0")+" / "+String(scenes.length).padStart(2,"0");[...progress.children].forEach((x,i)=>x.classList.toggle("on",i===current));beep();if(n===3)timer=setTimeout(()=>go(4),2900);if(n!==9)document.querySelector("#audio").pause()}
@@ -234,8 +234,8 @@ document.addEventListener("keydown",e=>{
  if(e.key==="Enter"||e.key===" "||e.key==="ArrowRight")start();
 });
 toggle.addEventListener("click",()=>{
- allowed=!allowed;
- if(!allowed){bg.pause();}
+ allowed=toggle.textContent==="♫";
+ if(!allowed){bg.pause();started=false;}
  else if(!window.__hmmmmFinalSongStarted){unavailable=false;start();}
 });
 document.querySelector("#restart").addEventListener("click",()=>{
