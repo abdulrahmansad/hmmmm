@@ -34,8 +34,10 @@ Single-file static site, no build step. Responsive CSS, accessible focus states,
 ## Notes
 
 The user's conversational copy is preserved without generic romantic rewriting. The Turkish line is used as an unattributed expression. This is a preview, not a deployed site until Pages is enabled.
-## Optional official YouTube music
+## Background music
 
-The site includes a small user-opened **visible** YouTube player for Ahmet Kaya's *Kendine İyi Bak* using the official YouTube embed. No copyrighted MP3 is hosted in this repository. The visitor presses play in the player, which can remain open during card navigation. When the personal finale audio starts, the YouTube player closes and its audio stops.
+The experience now has no music panel, mute control or YouTube embed. It attempts to play a quiet (8% volume) looping background audio track automatically using `assets/kendine-iyi-bak.mp3`, retries after the visitor's first tap/key press when autoplay is blocked, and stops permanently when the final personal song begins (until the story restarts).
 
-YouTube requires embedded players to remain visible and be at least 200 × 200 pixels; a hidden audio-only YouTube embed is not supported. Mobile autoplay is not guaranteed. This public GitHub Pages site is not private or access-controlled.
+**The Ahmet Kaya recording is not included.** Do not copy the song into a public repository or GitHub Pages deployment without permission to redistribute it. The ambient track remains silent until a licensed file is supplied. Chrome, Safari, and mobile browsers commonly block unmuted autoplay before user interaction; no JavaScript can guarantee otherwise.
+
+The personal song is likewise a placeholder at `assets/arshi-song.mp3`.
