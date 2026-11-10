@@ -113,6 +113,17 @@
 @media(max-height:720px){.gift-stage{height:145px}.gift-reveal img{height:125px}.luxury-gift{transform:scale(.75)}.luxe-headline{font-size:1.95rem}.gift-apology strong{font-size:1.75rem}.flirt-line{font-size:1.3rem!important}}
 @media(prefers-reduced-motion:reduce){.verdict-screen,.gift-reveal,.gift-apology,.gift-dialogue{animation:none!important}}
 
+</style>
+<style>
+.music-dock{position:absolute;z-index:65;left:15px;bottom:max(34px,env(safe-area-inset-bottom));font-family:"DM Sans",sans-serif}
+.music-open{border:1px solid #f3dcbb50;color:#ffefd8;background:#141420dc;padding:10px 14px;border-radius:30px;font-size:11px;letter-spacing:.02em;box-shadow:0 8px 25px #0005;backdrop-filter:blur(12px)}
+.music-panel{width:300px;max-width:calc(100vw - 30px);background:#14121deF;border:1px solid #f3d7ae4d;box-shadow:0 16px 55px #000a;border-radius:16px;padding:10px;margin-bottom:10px;backdrop-filter:blur(17px);color:#f9ead7}
+.music-panel-top{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;padding:2px 2px 9px}
+.music-panel-top button{background:#ffffff17;color:white;border:none;border-radius:50%;width:26px;height:26px;font-size:18px}
+.music-panel iframe{display:block;width:280px;max-width:100%;height:210px;min-height:200px;border:0;border-radius:9px;background:#0c0c12}
+.music-panel p{font-size:10px;line-height:1.45;color:#ccbaaa;margin:8px 3px 1px}
+.music-panel.hidden{display:none!important}
+@media(max-width:600px){.music-dock{left:10px;bottom:max(15px,env(safe-area-inset-bottom))}.music-open{max-width:150px;white-space:nowrap;font-size:10px;padding:9px 10px}.music-panel{width:calc(100vw - 20px);max-width:300px}.music-panel iframe{width:100%}}
 </style></head>
 <body>
 <div id="app">
@@ -159,8 +170,14 @@ btw biraynai treat dene ke paise the but that is for hehe</div></div>
 <div class="copy flirt-line">birayani agar ab khila di pir suhaagraat ka plan kharab hojayga 👉👈</div>
 <div class="flirt-blush">· · ·</div>
 <button class="action next">acha last cheez →</button></div></section>
-<section class="scene song" data-index="9" aria-label="A song for Arshi"><div class="content"><h2 class="serif title">for you, betu jii.</h2><div class="record paused" id="record" aria-hidden="true"></div><div class="fine">i don't sing well… but this one's yours.</div><audio id="background-music" src="assets/kendine-iyi-bak.mp3" preload="none" loop></audio><audio id="audio" preload="none" src="assets/arshi-song.mp3"></audio><button class="action" id="play">play my song ♪</button><div class="fine" id="song-message" role="status" aria-live="polite"></div><button class="action" id="restart">phir se shuru? ↺</button></div></section>
-<nav class="progress" id="progress" aria-label="Story progress"></nav><div class="footnote">made with too much overthinking</div>
+<section class="scene song" data-index="9" aria-label="A song for Arshi"><div class="content"><h2 class="serif title">for you, betu jii.</h2><div class="record paused" id="record" aria-hidden="true"></div><div class="fine">i don't sing well… but this one's yours.</div><audio id="audio" preload="none" src="assets/arshi-song.mp3"></audio><button class="action" id="play">play my song ♪</button><div class="fine" id="song-message" role="status" aria-live="polite"></div><button class="action" id="restart">phir se shuru? ↺</button></div></section>
+<div id="music-dock" class="music-dock">
+<button id="music-open" class="music-open" type="button" aria-expanded="false" aria-controls="music-panel">♫ &nbsp; Kendine İyi Bak</button>
+<div id="music-panel" class="music-panel hidden" aria-label="YouTube music player">
+<div class="music-panel-top"><span>Ahmet Kaya · Kendine İyi Bak</span><button id="music-close" type="button" aria-label="Close music player">×</button></div>
+<iframe id="music-frame" title="Ahmet Kaya — Kendine İyi Bak, official YouTube player" width="280" height="210" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen></iframe>
+<p>Press play on YouTube. Keep this player open to listen as you explore.</p>
+</div></div><nav class="progress" id="progress" aria-label="Story progress"></nav><div class="footnote">made with too much overthinking</div>
 </div>
 <script>
 (()=>{"use strict";
@@ -206,43 +223,28 @@ gift.addEventListener("click",()=>{if(opened)return;opened=true;gift.classList.a
 })();
 
 </script>
+
+
 <script>
 (()=>{
 "use strict";
-// Music starts only after a real user gesture (mobile autoplay restriction).
-// Supply a legally licensed track at assets/kendine-iyi-bak.mp3.
-// The UI stays usable if the optional audio file is missing.
-const bg=document.querySelector("#background-music");
-const toggle=document.querySelector("#sound");
-bg.volume=0.085;
-let allowed=true, started=false, unavailable=false;
-async function start(){
- if(!allowed||started||unavailable||window.__hmmmmFinalSongStarted)return;
- try{
-   await bg.play();
-   started=true;
- }catch(err){
-   // Missing asset or browser refusal: don't interrupt the story.
-   unavailable=true;
- }
-}
-document.addEventListener("pointerdown",e=>{
- if(e.target.closest("#sound,#play,#restart"))return;
- start();
-},{passive:true});
-document.addEventListener("keydown",e=>{
- if(e.key==="Enter"||e.key===" "||e.key==="ArrowRight")start();
+const open=document.querySelector("#music-open"),close=document.querySelector("#music-close"),panel=document.querySelector("#music-panel"),frame=document.querySelector("#music-frame"),finalAudio=document.querySelector("#audio"),sound=document.querySelector("#sound");
+const video="RBKVMxTGR-s";
+let musicEnabled=false;
+function stop(){frame.removeAttribute("src");panel.classList.add("hidden");open.setAttribute("aria-expanded","false");musicEnabled=false;}
+open.addEventListener("click",()=>{
+ if(musicEnabled){stop();return;}
+ if(window.__hmmmmFinalSongStarted){return;}
+ panel.classList.remove("hidden");
+ open.setAttribute("aria-expanded","true");
+ frame.src="https://www.youtube-nocookie.com/embed/"+video+"?enablejsapi=1&playsinline=1";
+ musicEnabled=true;
 });
-toggle.addEventListener("click",()=>{
- allowed=toggle.textContent==="♫";
- if(!allowed){bg.pause();started=false;}
- else if(!window.__hmmmmFinalSongStarted){unavailable=false;start();}
-});
-document.querySelector("#restart").addEventListener("click",()=>{
- bg.pause();bg.currentTime=0;started=false;unavailable=false;
- window.__hmmmmFinalSongStarted=false;
-});
-document.querySelector("#audio").addEventListener("play",()=>{bg.pause();window.__hmmmmFinalSongStarted=true});
+close.addEventListener("click",stop);
+finalAudio.addEventListener("play",stop);
+// The main sound toggle disables UI effects and closes YouTube, but YouTube's
+// own play/volume controls remain the authority while its player is visible.
+sound.addEventListener("click",()=>{if(sound.textContent==="♪")stop()});
+document.querySelector("#restart").addEventListener("click",()=>{stop();window.__hmmmmFinalSongStarted=false});
 })();
-</script>
-</body></html>
+</script></body></html>
