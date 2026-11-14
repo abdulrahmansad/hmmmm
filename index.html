@@ -160,7 +160,7 @@ btw biraynai treat dene ke paise the but that is for hehe</div></div>
 <div class="copy flirt-line">birayani agar ab khila di pir suhaagraat ka plan kharab hojayga 👉👈</div>
 <div class="flirt-blush">· · ·</div>
 <button class="action next">acha last cheez →</button></div></section>
-<section class="scene song" data-index="9" aria-label="A song for Arshi"><div class="content"><h2 class="serif title">for you, betu jii.</h2><div class="record paused" id="record" aria-hidden="true"></div><div class="fine">i don't sing well… but this one's yours.</div><audio id="ambient-soundtrack" src="assets/kendine-iyi-bak.mp3" preload="auto" loop></audio><audio id="audio" preload="none" src="assets/arshi-song.mp3"></audio><button class="action" id="play">play my song ♪</button><div class="fine" id="song-message" role="status" aria-live="polite"></div><button class="action" id="restart">phir se shuru? ↺</button></div></section>
+<section class="scene song" data-index="9" aria-label="A voice note for Arshi"><div class="content"><h2 class="serif title">for you, betu jii.</h2><div class="record paused" id="record" aria-hidden="true"></div><div class="fine">a little voice note for you.</div><audio id="ambient-soundtrack" src="assets/kendine-iyi-bak.mp3" preload="auto" loop></audio><audio id="audio" preload="none" src="assets/arshi-birthday-voice-note.mp3"></audio><button class="action" id="play">play my voice note</button><div class="fine" id="song-message" role="status" aria-live="polite"></div><button class="action" id="restart">phir se shuru? ↺</button></div></section>
 <nav class="progress" id="progress" aria-label="Story progress"></nav><div class="footnote">made with too much overthinking</div>
 </div>
 <script>
@@ -175,7 +175,7 @@ document.querySelector("#translate").addEventListener("click",()=>{document.quer
 document.querySelector("#restart").addEventListener("click",()=>go(0));
 
 const audio=document.querySelector("#audio"),play=document.querySelector("#play"),message=document.querySelector("#song-message"),record=document.querySelector("#record");
-play.addEventListener("click",async()=>{if(!audio.paused){audio.pause();play.textContent="play my song ♪";record.classList.add("paused");return}try{await audio.play();document.querySelector("#background-music")?.pause();window.__hmmmmFinalSongStarted=true;message.textContent="";play.textContent="pause";record.classList.remove("paused")}catch{message.textContent="The song isn't uploaded yet. Add assets/arshi-song.mp3 when it's ready.";record.classList.add("paused")}});
+play.addEventListener("click",async()=>{if(!audio.paused){audio.pause();play.textContent="play my voice note";record.classList.add("paused");return}try{await audio.play();document.querySelector("#background-music")?.pause();window.__hmmmmFinalSongStarted=true;message.textContent="";play.textContent="pause";record.classList.remove("paused")}catch{message.textContent="The voice note couldn’t play. Tap to try again.";record.classList.add("paused")}});
 audio.addEventListener("ended",()=>{play.textContent="play again ♪";record.classList.add("paused")});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&current>0)go(current-1)});
 })();
