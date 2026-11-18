@@ -19,7 +19,46 @@
 .fight{background:radial-gradient(circle at 50% 45%,#763b44,#271a2d 55%,#100e17)}.fight .rings{position:absolute;inset:-25%;background:repeating-radial-gradient(circle,#ffffff00 0 70px,#ffc6a815 71px 73px);animation:breathe 7s infinite}.fight .title{text-transform:uppercase;font-size:clamp(2.6rem,8vw,5.4rem)}.fight .copy{font-size:clamp(.95rem,3vw,1.22rem)}.fight .content{max-width:700px}
 .pout{background:radial-gradient(circle at 30% 20%,#f1a8b7,#a44f74 45%,#432944 100%)}.pout .huge{font-size:clamp(3.5rem,14vw,10rem);transform:rotate(-5deg);text-shadow:8px 10px #46122b44}.pout .doodle{position:absolute;font-size:45vw;opacity:.08;transform:rotate(-22deg)}
 .secret{background:radial-gradient(circle at 50% 50%,#4d4852,#191a22 62%,#06060a)}.secret .spotlight{position:absolute;top:-60%;width:110vmin;height:175vmin;background:conic-gradient(from 167deg at 50% 0,#0000 0deg,#e9d4aa22 20deg,#0000 42deg);filter:blur(22px);animation:sway 8s infinite alternate ease-in-out}.secret .whisper{font-family:"Playfair Display",serif;color:#e8c997;font-style:italic;font-size:clamp(1.5rem,5vw,3rem);display:block;margin-top:26px}
-.istanbul{background:linear-gradient(180deg,#131d3e 0%,#53415c 42%,#bd8078 62%,#1f3151 63%,#09192b 100%)}.istanbul .moon{position:absolute;width:120px;height:120px;top:12%;right:17%;border-radius:50%;background:#ffe1a7;box-shadow:0 0 70px #ffdb9d99}.istanbul .water{position:absolute;top:63%;bottom:0;width:100%;background:repeating-linear-gradient(176deg,#ecae8052 0 1px,transparent 2px 17px);animation:water 9s linear infinite;opacity:.58}.istanbul .bridge{position:absolute;top:49%;width:100%;height:23%;border-top:3px solid #171d36;transform:skewY(-2deg);box-shadow:0 7px #e9b88577}.istanbul .bridge:before,.istanbul .bridge:after{content:"";position:absolute;bottom:0;height:150%;width:9px;background:#20263c;box-shadow:2px 0 #edc39e66}.istanbul .bridge:before{left:16%}.istanbul .bridge:after{right:18%}.istanbul .quote{font-family:"Playfair Display",Georgia,serif;font-size:clamp(2.05rem,6.6vw,4.3rem);line-height:1.35;font-style:italic;text-shadow:0 4px 30px #091528}.istanbul .glass{padding:32px 20px;background:linear-gradient(120deg,#09162fa8,#211d3370);border:1px solid #fffa;box-shadow:0 20px 75px #07142699;border-radius:24px;backdrop-filter:blur(12px)}.istanbul .translation{font-size:13px;margin-top:15px;color:#eddabf}
+.istanbul{background:linear-gradient(180deg,#131d3e 0%,#53415c 42%,#bd8078 62%,#1f3151 63%,#09192b 100%)}.istanbul .moon{position:absolute;width:120px;height:120px;top:12%;right:17%;border-radius:50%;background:#ffe1a7;box-shadow:0 0 70px #ffdb9d99}.istanbul .water{position:absolute;top:63%;bottom:0;width:100%;background:repeating-linear-gradient(176deg,#ecae8052 0 1px,transparent 2px 17px);animation:water 9s linear infinite;opacity:.58}.istanbul .bridge{position:absolute;top:49%;width:100%;height:23%;border-top:3px solid #171d36;transform:skewY(-2deg);box-shadow:0 7px #e9b88577}.istanbul .bridge:before,.istanbul .bridge:after{content:"";position:absolute;bottom:0;height:150%;width:9px;background:#20263c;box-shadow:2px 0 #edc39e66}.istanbul .bridge:before{left:16%}.istanbul .bridge:after{right:18%}.istanbul .quote{font-family:"Playfair Display",Georgia,serif;font-size:clamp(2.05rem,6.6vw,4.3rem);line-height:1.35;font-style:italic;text-shadow:0 4px 30px #091528}.istanbul .glass{padding:32px 20px;background:linear-gradient(120deg,#09162fa8,#211d3370);border:1px solid #fffa;box-shadow:0 20px 75px #07142699;border-radius:24px;backdrop-filter:blur(12px)}.istanbul .translation{
+  display:grid;
+  grid-template-rows:0fr;
+  opacity:0;
+  visibility:hidden;
+  transition:grid-template-rows .55s var(--ease),opacity .32s ease,visibility .55s;
+}
+.istanbul .translation.open{
+  grid-template-rows:1fr;
+  opacity:1;
+  visibility:visible;
+  transition:grid-template-rows .55s var(--ease),opacity .38s .12s ease;
+}
+.istanbul .translation-body{min-height:0;overflow:hidden}
+.istanbul .translation p{
+  max-width:32ch;
+  margin:0 auto;
+  padding:18px 6px 2px;
+  color:#f8e4c8;
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(1rem,3.7vw,1.3rem);
+  line-height:1.55;
+  transform:translateY(-8px);
+  transition:transform .55s var(--ease);
+}
+.istanbul .translation p::before{
+  content:"";
+  display:block;
+  width:70px;
+  height:1px;
+  margin:0 auto 12px;
+  background:linear-gradient(90deg,transparent,#f6cf95,transparent);
+  transform:scaleX(0);
+  transition:transform .5s var(--ease);
+}
+.istanbul .translation.open p{transform:translateY(0)}
+.istanbul .translation.open p::before{transform:scaleX(1)}
+@media(prefers-reduced-motion:reduce){
+  .istanbul .translation,.istanbul .translation.open,.istanbul .translation p,.istanbul .translation p::before{transition:none}
+}
 .driving{background:linear-gradient(180deg,#172234,#0d1420 55%,#1d2028)}.driving .highway{position:absolute;bottom:-29%;left:50%;width:120%;height:80%;background:linear-gradient(90deg,#131a22,#30333e 50%,#141a23);clip-path:polygon(41% 0,59% 0,100% 100%,0 100%);transform:translateX(-50%)}.driving .lane{position:absolute;bottom:-5%;left:50%;height:55%;width:8px;transform:perspective(300px) rotateX(35deg);background:repeating-linear-gradient(0deg,#e8dca3 0 38px,transparent 40px 95px);animation:road 1.5s linear infinite}.driving .alert{display:inline-block;background:#e2ab5a;color:#171724;padding:6px 16px;border-radius:4px;font-weight:700;letter-spacing:.13em;transform:rotate(-3deg)}.driving .content{border:1px solid #e7c0833f;border-radius:16px;background:#111927b8;backdrop-filter:blur(9px)}.driving .copy{font-size:clamp(1.05rem,3.5vw,1.4rem)}
 .luxury{background:radial-gradient(ellipse at 50% 60%,#6a4d3d,#1c161b 60%,#0d0a0e)}.luxury .box3d{width:180px;height:125px;background:linear-gradient(135deg,#8b6a48,#251913);border:2px solid #c4a078;box-shadow:0 20px 60px #0007,inset 0 0 0 8px #3a251d;position:relative;margin:20px auto 34px;transform:perspective(700px) rotateX(11deg);animation:giftfloat 5s ease-in-out infinite}.luxury .box3d:before{content:"";position:absolute;top:-18px;left:-8px;right:-8px;height:36px;border:2px solid #d6b68b;background:linear-gradient(140deg,#a78555,#3a2923);transform:skewX(-6deg)}.luxury .box3d:after{content:"";position:absolute;top:-18px;bottom:0;left:44%;width:15px;background:#e4be79;box-shadow:0 0 15px #f6cf8b66}.luxury .copy{font-size:clamp(1.05rem,3.3vw,1.38rem)}.luxury .shoe{font-size:54px;filter:drop-shadow(0 10px 16px #000)}
 .biryani{background:radial-gradient(circle at 48% 65%,#9c5635,#48252d 52%,#1d1321)}.biryani .plate{width:250px;height:145px;background:radial-gradient(ellipse,#dfb77d 0 48%,#402c28 49% 64%,#d1a46a 66% 72%,transparent 73%);border-radius:50%;margin:10px auto 42px;box-shadow:0 30px 60px #0007;transform:rotate(-6deg);display:grid;place-items:center;animation:giftfloat 5s infinite}.biryani .plate:after{content:"✦  ✦  ✦";color:#6e341d;text-shadow:9px 4px #f5d188;letter-spacing:20px;font-size:20px}.biryani .steam{position:absolute;top:10%;left:50%;font-size:70px;opacity:.18;animation:rise 3s infinite alternate}
@@ -133,7 +172,10 @@ tbh bacha jii i have a question hum dono bohat ladhte hain i agree we fight alot
 but why kon ghalat hota hain</div><div class="choice-row"><button class="choice" data-answer="me">me</button><button class="choice" data-answer="you">you</button></div><div class="response hidden" id="fight-answer" role="status" aria-live="polite"></div><button class="action next hidden" id="fight-next">bas bas aage →</button><div class="verdict-screen hidden" id="verdict-screen" role="dialog" aria-modal="true" aria-labelledby="verdict-title"><div class="verdict-stamp" id="verdict-stamp">?</div><div class="verdict-label" id="verdict-label"></div><h3 id="verdict-title"></h3><button class="verdict-next" id="verdict-next">acha aage →</button></div></div></section>
 <section class="scene pout" data-index="3" aria-label="The reaction"><div class="doodle" aria-hidden="true">:(</div><div class="content"><h2 class="serif huge">muuh<br>banaliya 😭</h2><p class="fine">...</p></div></section>
 <section class="scene secret" data-index="4" aria-label="A secret confession"><div class="spotlight"></div><div class="content"><h2 class="serif title">okay thik hain maan leta hoon aaj main ghalat hota hoon</h2><span class="whisper">but kisi ko batana nahi</span><button class="action next">promise? →</button></div></section>
-<section class="scene istanbul" data-index="5" aria-label="A Turkish poem"><div class="moon"></div><div class="bridge"></div><div class="water"></div><div class="content"><div class="glass"><p class="quote">İnsan iki göze âşık olur, sonra bütün dünyaya kör olur.</p><button class="action" id="translate">translate aap karenge hehe</button><div class="translation hidden" id="translation">One falls in love with two eyes, and then becomes blind to the whole world.</div></div><button class="action next">chalo ab →</button></div></section>
+<section class="scene istanbul" data-index="5" aria-label="A Turkish poem"><div class="moon"></div><div class="bridge"></div><div class="water"></div><div class="content"><div class="glass"><p class="quote">İnsan iki göze âşık olur, sonra bütün dünyaya kör olur.</p><button class="action" id="translate" type="button" aria-expanded="false" aria-controls="translation">translate khud karo jii!!</button>
+<div class="translation" id="translation" inert>
+  <div class="translation-body"><p lang="en">One falls in love with two eyes, and then becomes blind to the whole world.</p></div>
+</div></div><button class="action next">chalo ab →</button></div></section>
 <section class="scene driving" data-index="6" aria-label="Driving school"><div class="highway"></div><div class="lane"></div><div class="content"><h2 class="serif title">muhtarma...</h2><div class="copy">wese car chalana sikhlo warna muhtarma time ayga time mujh se sikho gi pir think beta itna maar maar maar maar maaar maaar ke sikhawga so i would love to advice you ki bacha ji khud se sikhlo mere fatehpur ane se pehle</div><button class="action next">samjh gayi? →</button></div></section>
 <section class="scene luxury" data-index="7" aria-label="The YSL gift reveal">
 <div class="runway-orb" aria-hidden="true"></div>
@@ -171,7 +213,14 @@ function beep(){if(muted)return;try{audioCtx ||= new(window.AudioContext||window
 function go(n){clearTimeout(timer);if(n<0||n>=scenes.length)return;const prev=scenes[current];prev.classList.remove("active");prev.querySelector(".content")?.classList.remove("enter");current=n;scenes[current].classList.add("active");const c=scenes[current].querySelector(".content");c?.scrollTo(0,0);void c?.offsetWidth;c?.classList.add("enter");count.textContent=String(current+1).padStart(2,"0")+" / "+String(scenes.length).padStart(2,"0");[...progress.children].forEach((x,i)=>x.classList.toggle("on",i===current));beep();if(n===3)timer=setTimeout(()=>go(4),2900);if(n!==9)document.querySelector("#audio").pause()}
 document.querySelectorAll(".next").forEach(b=>b.addEventListener("click",()=>go(current+1)));
 document.querySelectorAll("[data-answer]").forEach(b=>b.addEventListener("click",()=>{document.querySelector("#fight-answer").textContent=b.dataset.answer==="you"?"wrong answer — bacha arp is always right":"sikh rahi ho beta arp cant be wrong haha";document.querySelector("#fight-next").classList.remove("hidden");beep()}));
-document.querySelector("#translate").addEventListener("click",()=>{document.querySelector("#translation").classList.toggle("hidden");beep()});
+const translateButton = document.querySelector("#translate");
+const translation = document.querySelector("#translation");
+translateButton.addEventListener("click", () => {
+  const isOpen = translation.classList.toggle("open");
+  translation.inert = !isOpen;
+  translateButton.setAttribute("aria-expanded", String(isOpen));
+  beep();
+});
 document.querySelector("#restart").addEventListener("click",()=>go(0));
 
 const audio=document.querySelector("#audio"),play=document.querySelector("#play"),message=document.querySelector("#song-message"),record=document.querySelector("#record");
