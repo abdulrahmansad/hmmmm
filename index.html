@@ -119,19 +119,123 @@
 .gift-dialogue .copy{font-size:clamp(.93rem,2.8vw,1.12rem);line-height:1.52}
 .luxury .action{margin-top:9px}
 @keyframes apologyPop{from{opacity:0;transform:translateY(18px) scale(.9)}to{opacity:1;transform:none}}@keyframes revealReal{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.biryani.flirty{background:radial-gradient(ellipse at 50% 70%,#813d56,#311b35 60%,#160f23)!important}
-.flirty .flirt-glow{position:absolute;width:400px;height:500px;max-width:85vw;top:18%;left:50%;transform:translateX(-50%);background:radial-gradient(ellipse,#d77a9066,transparent 70%);filter:blur(30px);animation:breathe 7s infinite}
-.flirt-curtain{position:absolute;top:0;bottom:0;width:33%;background:repeating-linear-gradient(92deg,#6b2b4b33 0 8px,#3a173455 12px 24px,transparent 29px 42px);filter:blur(7px)}
-.flirt-curtain.left{left:-7%;transform:skewX(-8deg)}.flirt-curtain.right{right:-7%;transform:skewX(8deg)}
-.little-envelope{display:flex;flex-direction:column;align-items:center;gap:8px;width:130px;margin:0 auto 20px;transform:rotate(-8deg);filter:drop-shadow(0 10px 15px #0008)}
-.little-envelope>span{font-family:Georgia,serif;font-size:90px;line-height:.9;color:#eac1b6}
-.little-envelope small{font-size:9px;letter-spacing:.25em;color:#f8d8c9}
-.flirt-line{max-width:620px!important;font-size:clamp(1.3rem,4.5vw,2.25rem)!important;line-height:1.6!important;font-family:"Playfair Display",Georgia,serif;text-shadow:0 3px 30px #0005}
-.flirt-blush{font-size:28px;letter-spacing:12px;color:#f8a6ad;animation:breathe 2s infinite}
 .driving .alert{background:#ffce71;color:#252018;font-size:11px;letter-spacing:.18em}
-@media(max-width:600px){.verdict-screen h3{font-size:clamp(2.4rem,10vw,4.2rem)}.gift-stage{height:190px}.gift-reveal img{height:155px}.luxury-gift{transform:scale(.85) rotate(-5deg)}.gift-dialogue{padding:9px 13px}.luxury .copy{line-height:1.4}.luxe-headline{font-size:2.5rem}.little-envelope{margin-bottom:10px}.flirt-line{font-size:1.55rem!important}}
-@media(max-height:720px){.gift-stage{height:145px}.gift-reveal img{height:125px}.luxury-gift{transform:scale(.75)}.luxe-headline{font-size:1.95rem}.gift-apology h3{font-size:1.75rem}.flirt-line{font-size:1.3rem!important}}
+@media(max-width:600px){.verdict-screen h3{font-size:clamp(2.4rem,10vw,4.2rem)}.gift-stage{height:190px}.gift-reveal img{height:155px}.luxury-gift{transform:scale(.85) rotate(-5deg)}.gift-dialogue{padding:9px 13px}.luxury .copy{line-height:1.4}.luxe-headline{font-size:2.5rem}}
+@media(max-height:720px){.gift-stage{height:145px}.gift-reveal img{height:125px}.luxury-gift{transform:scale(.75)}.luxe-headline{font-size:1.95rem}.gift-apology h3{font-size:1.75rem}}
 @media(prefers-reduced-motion:reduce){.verdict-screen,.gift-reveal,.gift-apology,.gift-dialogue{animation:none!important}}
+
+/* The biryani card is a note tucked into an envelope. */
+.biryani.flirty{
+  background:radial-gradient(ellipse at 50% 43%,#552636,#291321 60%,#150f19)!important;
+}
+.biryani .flirt-content{
+  width:min(calc(100% - 28px),570px);
+  padding:20px 6px 14px;
+}
+.biryani .envelope-note{
+  position:relative;
+  isolation:isolate;
+  padding:27px clamp(18px,6vw,46px) 31px;
+  margin:26px 2px 19px;
+  background:linear-gradient(155deg,#f8ead5,#efe0c6);
+  color:#49252e;
+  text-align:left;
+  border:1px solid #ffe8c5;
+  border-radius:4px 4px 10px 10px;
+  box-shadow:0 4px 0 #d7b59a,0 13px 0 -4px #8b4a50,0 24px 45px #16081288;
+}
+.biryani .envelope-note::after{
+  content:"";
+  position:absolute;
+  inset:9px;
+  border:1px solid #94625738;
+  border-radius:2px 2px 6px 6px;
+  pointer-events:none;
+}
+.biryani .envelope-seal{
+  position:absolute;
+  top:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  display:grid;
+  place-items:center;
+  width:37px;
+  height:37px;
+  border-radius:50%;
+  border:1px solid #a85a65;
+  background:radial-gradient(circle at 35% 26%,#b35e6b,#773340 70%);
+  box-shadow:0 3px 7px #49252e60,inset 0 0 0 3px #73354072;
+  color:#f9c8b8;
+  font-family:Georgia,serif;
+  font-size:19px;
+}
+.biryani .envelope-note .title{
+  margin:7px 0 12px;
+  color:#512733;
+  font-size:clamp(1.9rem,6vw,3.45rem);
+  line-height:1.13;
+  text-wrap:balance;
+}
+.biryani .envelope-note .flirt-line{
+  margin:0;
+  font-family:"DM Sans",sans-serif;
+  font-size:clamp(1rem,4.2vw,1.3rem);
+  line-height:1.62;
+  text-wrap:pretty;
+}
+.biryani .flirt-content > .action{
+  min-height:48px;
+  margin:10px auto 0;
+  padding-inline:24px;
+  background:#f3dcc8;
+  color:#492530;
+  border-color:#f3dcc8;
+  font-weight:700;
+}
+.biryani .flirt-content.enter > .envelope-note{
+  animation:letter-arrive .78s both var(--ease);
+}
+@keyframes letter-arrive{
+  from{opacity:0;transform:translateY(24px) rotate(-3deg) scale(.98)}
+  to{opacity:1;transform:translateY(0) rotate(0) scale(1)}
+}
+@media(max-width:600px){
+  #app{
+    min-height:0;
+    --story-top:max(50px,calc(env(safe-area-inset-top) + 37px));
+    --story-bottom:max(43px,calc(env(safe-area-inset-bottom) + 26px));
+  }
+  .topbar{padding:max(13px,env(safe-area-inset-top)) 18px 9px}
+  .progress{bottom:max(15px,calc(env(safe-area-inset-bottom) + 7px));gap:5px}
+  .dot{width:13px}
+  .dot.on{width:25px}
+  .scene{padding-block:var(--story-top) var(--story-bottom)}
+  .scene .content{
+    width:calc(100% - 28px);
+    max-height:calc(100dvh - var(--story-top) - var(--story-bottom));
+    padding:12px 8px;
+    overscroll-behavior:contain;
+  }
+  .scene .title{margin:0 auto 15px;line-height:1.11;text-wrap:balance}
+  .scene .copy{font-size:clamp(1rem,4.1vw,1.125rem);line-height:1.58}
+  .scene .action,.scene .choice,.scene .verdict-next{min-height:48px}
+  .scene .action{padding:11px 21px}
+  .fight .choice-row{margin-top:18px}
+  .fight .choice{min-width:0;width:min(44%,148px);padding:11px 18px}
+  .secret .whisper{display:block}
+  .istanbul .glass{padding:24px 16px}
+  .istanbul .quote-stage .quote{font-size:clamp(1.75rem,7.3vw,2.65rem);line-height:1.28}
+  .driving .content{padding:20px 16px}
+  .gift-stage{height:clamp(126px,24dvh,180px)}
+  .gift-reveal img{height:clamp(101px,19dvh,148px)}
+  .song .record{width:min(48vw,175px);height:min(48vw,175px)}
+}
+@media(max-width:600px) and (max-height:650px){
+  .scene .title{margin-bottom:11px}
+  .scene .copy{line-height:1.48}
+  .scene .action{margin-top:12px}
+  .biryani .envelope-note{padding-block:22px 22px;margin-bottom:12px}
+}
 
 </style>
 </head>
@@ -175,12 +279,12 @@ but why kon ghalat hota hain</div><div class="choice-row"><button class="choice"
 <button class="action next hidden" id="gift-next">acha ek baat aur →</button>
 </div></section>
 <section class="scene biryani flirty" data-index="8" aria-label="A mischievous confession">
-<div class="flirt-glow"></div><div class="flirt-curtain left"></div><div class="flirt-curtain right"></div>
 <div class="content flirt-content">
-<div class="little-envelope" aria-hidden="true"><span>✉</span><small>CONFIDENTIAL</small></div>
+<div class="envelope-note">
+<span class="envelope-seal" aria-hidden="true">✦</span>
 <h2 class="serif title">ek choti si baat…</h2>
 <p class="copy flirt-line">biryani khilane ke paise the but agar wo aaj kar lete then suahgraat ka plan kharab hota 👉👈</p>
-<div class="flirt-blush">· · ·</div>
+</div>
 <button class="action next">acha last cheez →</button></div></section>
 <section class="scene song" data-index="9" aria-label="A voice note for Arshi"><div class="content"><h2 class="serif title">for you, betu jii.</h2><div class="record paused" id="record" aria-hidden="true"></div><div class="fine">a little voice note for you.</div><audio id="ambient-soundtrack" src="assets/kendine-iyi-bak.mp3" preload="auto" loop></audio><audio id="audio" preload="none" src="assets/arshi-birthday-voice-note.mp3"></audio><button class="action" id="play">play my voice note</button><div class="fine" id="song-message" role="status" aria-live="polite"></div><button class="action" id="restart">phir se shuru? ↺</button></div></section>
 <nav class="progress" id="progress" aria-label="Story progress"></nav>
