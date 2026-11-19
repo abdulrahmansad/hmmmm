@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 concurrency:
@@ -25,6 +26,22 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+          name: github-pages-${{ github.run_attempt }}
+      - name: Wait for the Pages artifact to be listed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PAGES_ARTIFACT: github-pages-${{ github.run_attempt }}
+        run: |
+          for attempt in {1..12}; do
+            if count=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts?name=$PAGES_ARTIFACT" --jq '.total_count') && [[ "$count" == 1 ]]; then
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "::error::GitHub has not listed the uploaded Pages artifact."
+          exit 1
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
