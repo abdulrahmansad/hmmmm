@@ -113,8 +113,8 @@
 .gift-reveal img{height:min(28vh,230px);width:min(70vw,255px);object-fit:contain;mix-blend-mode:screen;border-radius:9px;background:#f2f0f0;filter:drop-shadow(0 11px 12px #0006)}
 .reveal-product-label{font-size:10px;letter-spacing:.22em;color:#e8c794;margin-top:8px}
 .gift-apology{margin:8px auto 12px;animation:apologyPop .6s both;display:flex;gap:7px;flex-direction:column;align-items:center}
-.gift-apology strong{font-weight:800;font-size:clamp(1.8rem,7.7vw,4.7rem);line-height:1;letter-spacing:-.07em;color:#f2d1ae}
-.gift-apology span{font-size:15px;color:#ac9f92}
+.gift-apology h3{margin:0;font-weight:800;font-size:clamp(1.8rem,7.7vw,4.7rem);line-height:1;letter-spacing:-.07em;color:#f2d1ae}
+
 .gift-dialogue{animation:revealReal .6s both;background:#ffffff0a;border:1px solid #f3d3ab29;border-radius:17px;padding:12px 15px;max-width:570px;margin:10px auto}
 .gift-dialogue .copy{font-size:clamp(.93rem,2.8vw,1.12rem);line-height:1.52}
 .luxury .action{margin-top:9px}
@@ -130,7 +130,7 @@
 .flirt-blush{font-size:28px;letter-spacing:12px;color:#f8a6ad;animation:breathe 2s infinite}
 .driving .alert{background:#ffce71;color:#252018;font-size:11px;letter-spacing:.18em}
 @media(max-width:600px){.verdict-screen h3{font-size:clamp(2.4rem,10vw,4.2rem)}.gift-stage{height:190px}.gift-reveal img{height:155px}.luxury-gift{transform:scale(.85) rotate(-5deg)}.gift-dialogue{padding:9px 13px}.luxury .copy{line-height:1.4}.luxe-headline{font-size:2.5rem}.little-envelope{margin-bottom:10px}.flirt-line{font-size:1.55rem!important}}
-@media(max-height:720px){.gift-stage{height:145px}.gift-reveal img{height:125px}.luxury-gift{transform:scale(.75)}.luxe-headline{font-size:1.95rem}.gift-apology strong{font-size:1.75rem}.flirt-line{font-size:1.3rem!important}}
+@media(max-height:720px){.gift-stage{height:145px}.gift-reveal img{height:125px}.luxury-gift{transform:scale(.75)}.luxe-headline{font-size:1.95rem}.gift-apology h3{font-size:1.75rem}.flirt-line{font-size:1.3rem!important}}
 @media(prefers-reduced-motion:reduce){.verdict-screen,.gift-reveal,.gift-apology,.gift-dialogue{animation:none!important}}
 
 </style>
@@ -170,10 +170,8 @@ but why kon ghalat hota hain</div><div class="choice-row"><button class="choice"
 <img src="https://di2ponv0v5otw.cloudfront.net/posts/2022/09/19/6329617152eee19327330fd5/l_63296192ffb5d06256039301.jpg" alt="Real black Saint Laurent Opyum sandal with golden YSL sculptural heel" loading="lazy" referrerpolicy="no-referrer">
 <div class="reveal-product-label">SAINT LAURENT · OPYUM</div></div></div>
 <div id="gift-instruction" class="fine">tap the gift box</div>
-<div class="gift-apology hidden" id="gift-apology"><strong>sorry no money iss</strong><span>haha</span></div>
-<div class="gift-dialogue hidden" id="gift-dialogue"><div class="copy">ysl ke heels yaad hain but thoda sa money short hain so karenge gift kabhi toh haha but filhal picture main dekh ke kush hojaw haha
-
-btw biraynai treat dene ke paise the but that is for hehe</div></div>
+<div class="gift-apology hidden" id="gift-apology"><h3>sorry no money</h3></div>
+<div class="gift-dialogue hidden" id="gift-dialogue"><p class="copy">filhal pic se kaal chala lo btw promise yaad hain aik din ysl ke dilawga aaj ya kal but aik din</p></div>
 <button class="action next hidden" id="gift-next">acha ek baat aur →</button>
 </div></section>
 <section class="scene biryani flirty" data-index="8" aria-label="A mischievous confession">
