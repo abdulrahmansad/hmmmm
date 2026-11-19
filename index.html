@@ -237,12 +237,150 @@
   .biryani .envelope-note{padding-block:22px 22px;margin-bottom:12px}
 }
 
+/* Gilded cover, paper wishes and a midnight listening room. */
+.novel{
+  background:radial-gradient(ellipse at 50% 32%,#57323b 0,#22141e 54%,#100d14 85%);
+}
+.novel .orbit{width:min(108vw,660px);height:min(108vw,660px);opacity:.4}
+.novel .storybook{display:none}
+.novel .book-cover{
+  --cover-edge:#d3aa70;
+  isolation:isolate;
+  display:grid;
+  justify-items:center;
+  align-content:center;
+  gap:clamp(11px,2.8dvh,23px);
+  width:min(calc(100% - 44px),465px);
+  min-height:min(65dvh,525px);
+  padding:clamp(22px,5dvh,44px) 28px;
+  border:1px solid #aa704d;
+  border-radius:7px 21px 21px 7px;
+  background:linear-gradient(90deg,#1a0c142e 0 8px,#b1766b4a 9px 10px,#220e1c44 11px 14px,transparent 15px),
+    radial-gradient(ellipse at 50% 23%,#632b3a,#3b1928 65%,#291320);
+  box-shadow:5px 4px 0 -1px #b68556,9px 7px 0 -4px #e5c18c,0 24px 54px #050308ad,inset 0 0 43px #1f11156e;
+}
+.book-cover::before,.book-cover::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  pointer-events:none;
+  border:1px solid #c99d635f;
+  border-radius:4px 14px 14px 4px;
+}
+.book-cover::before{inset:13px 13px 13px 20px}
+.book-cover::after{inset:18px 18px 18px 25px;border-color:#edc98e40}
+.cover-ornament{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#eccb92;
+  font-size:1.2rem;
+  line-height:1;
+}
+.cover-ornament::before,.cover-ornament::after{
+  content:"";
+  width:34px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#eccb92);
+}
+.cover-ornament::after{transform:scaleX(-1)}
+.novel .book-cover .intro-title{
+  margin:0;
+  color:#fff2dc;
+  font-family:"Playfair Display",Georgia,serif!important;
+  font-size:clamp(2.65rem,11vw,5.65rem)!important;
+  font-weight:400!important;
+  line-height:.98!important;
+  letter-spacing:-.07em!important;
+}
+.novel .book-cover .intro-title span{
+  margin-top:.15em;
+  color:#efc483;
+  letter-spacing:-.07em;
+}
+.book-cover .cover-note{color:#efd2bc;margin:0}
+.novel .book-cover .action.primary{
+  min-height:49px;
+  margin:4px 0 0;
+  background:#f4d8a8;
+  color:#3a1b26;
+  box-shadow:0 5px 18px #170e1966;
+}
+.wish{
+  background:radial-gradient(ellipse at 45% 38%,#795142,#392737 75%,#242131);
+}
+.wish .content{
+  width:min(calc(100% - 36px),640px);
+  padding:clamp(20px,4vw,38px);
+  border:1px solid #ffe6c6;
+  border-radius:7px 7px 22px 7px;
+  background:linear-gradient(145deg,#fff0db,#eed9b9);
+  color:#3c2730;
+  box-shadow:0 5px 0 -1px #c6a17d,0 24px 60px #1a11198c;
+  scrollbar-color:#956759 #f3dfc1;
+}
+.wish .title{margin:0 auto 14px;color:#632b3d;text-wrap:balance}
+.wish .copy{text-align:left;color:#443037}
+.wish .action{
+  min-height:48px;
+  margin-top:17px;
+  color:#fff0da;
+  background:#652f40;
+  border-color:#652f40;
+}
+.wish .action:focus-visible{outline-color:#652f40}
+.fight .choice{
+  background:#3c2632;
+  border-color:#f1c39d77;
+  font-weight:700;
+}
+.fight .choice:hover{background:#573845}
+.secret .content{padding-inline:clamp(14px,4vw,35px)}
+.secret .whisper{color:#f4d5a0}
+.istanbul .glass{
+  background:linear-gradient(135deg,#171d38ed,#202a45d9);
+  border-color:#efcf986b;
+  box-shadow:0 18px 50px #0813279e,inset 0 0 0 4px #efd7af12;
+}
+.istanbul .quote-stage{padding-block:7px}
+.song{
+  background:radial-gradient(ellipse at 50% 39%,#353359,#19192e 61%,#0d111e);
+}
+.song .record{
+  background:repeating-radial-gradient(circle,#111420 0 4px,#3e3a4f 5px 6px,#191927 7px 10px);
+  border-color:#0c101b;
+  box-shadow:0 0 0 1px #cabbef70,0 0 0 9px #cfbafa12,0 18px 45px #050710a1;
+}
+.song #play{
+  min-height:48px;
+  background:#eaddf7;
+  color:#2c2443;
+  border-color:#eaddf7;
+  font-weight:700;
+}
+@media(max-width:600px){
+  .wish .content{padding:19px 17px 18px}
+  .wish .title{font-size:clamp(1.85rem,8.2vw,2.85rem)}
+  .wish .copy{font-size:clamp(.95rem,4.05vw,1.075rem);line-height:1.5}
+  .wish .action{margin-top:13px}
+}
+@media(max-width:600px) and (max-height:620px){
+  .novel .book-cover{min-height:min(73dvh,410px);gap:12px;padding-block:21px}
+  .wish .content{padding-top:15px;padding-bottom:14px}
+  .wish .title{margin-bottom:9px}
+}
+
 </style>
 </head>
 <body>
 <div id="app">
 <header class="topbar"><span>hmmmm <span aria-hidden="true">✦</span></span><span id="count">01 / 10</span></header>
-<section class="scene novel active" data-index="0" aria-label="A strange beginning"><div class="orbit"></div><div class="openbook" aria-hidden="true">❧</div><div class="content enter"><h1 class="hero intro-title">Marah <span>Jamela?</span></h1><div class="fine">hmmmm…</div><button class="action primary next">aage dekho →</button></div></section>
+<section class="scene novel active" data-index="0" aria-label="A strange beginning"><div class="orbit"></div><div class="openbook" aria-hidden="true">❧</div><div class="content book-cover enter">
+<div class="cover-ornament" aria-hidden="true"><span>✦</span></div>
+<h1 class="hero intro-title">Marah <span>Jamela?</span></h1>
+<div class="fine cover-note">hmmmm…</div>
+<button class="action primary next">aage dekho →</button>
+</div></section>
 <section class="scene wish" data-index="1" aria-label="Birthday wishes"><div class="content"><h2 class="serif title">madem jii hmmm...</h2><div class="copy">aaj ka din its 22 11 aap ka birthday so HBD maybe hehe just kidding happy birthday mahrani saa
 
 i hope aap ke sare kwahishat poore ho allah aap ko khushiya de and aap ki hifazat karen and yeah aap ko ache kamo ki tofeeq de and ghalat chizo se door rakhe aallah aap ki aims achive karen and jo parai kar rahi ho i wish aap ko iss main kamyab hota huwa dekhun
