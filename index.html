@@ -237,137 +237,186 @@
   .biryani .envelope-note{padding-block:22px 22px;margin-bottom:12px}
 }
 
-/* Gilded cover, paper wishes and a midnight listening room. */
+/* Candlelit opening and birthday wishes. */
 .novel{
-  background:radial-gradient(ellipse at 50% 32%,#57323b 0,#22141e 54%,#100d14 85%);
+  background:radial-gradient(ellipse at 50% 43%,#aa547a 0,#65355e 39%,#2b1e3b 77%,#1c1729);
 }
-.novel .orbit{width:min(108vw,660px);height:min(108vw,660px);opacity:.4}
+.novel::after{
+  background:linear-gradient(180deg,#23152c42,transparent 30% 80%,#20152775);
+}
 .novel .storybook{display:none}
-.novel .book-cover{
-  --cover-edge:#d3aa70;
-  isolation:isolate;
+.novel .party-opening{
+  width:min(calc(100% - 28px),620px);
+  padding:10px 4px 15px;
+  overflow:visible;
+}
+.novel .party-opening .intro-title{
+  margin:0 auto 5px;
+  font-family:"Playfair Display",Georgia,serif!important;
+  font-weight:500!important;
+  font-size:clamp(2.55rem,11.4vw,5.5rem)!important;
+  line-height:1.04!important;
+  letter-spacing:-.055em!important;
+  color:#fff2eb;
+  text-shadow:0 3px 30px #4a1d4f6b!important;
+}
+.novel .party-opening .intro-title span{color:#ffbad5}
+.party-decor{
+  position:absolute;
+  inset:8% 0 6%;
+  pointer-events:none;
+  background:radial-gradient(circle,#ffcbad98 1px,transparent 2px) 14px 29px / 73px 77px,
+    radial-gradient(circle,#ffc6df69 1px,transparent 2px) 39px 16px / 107px 102px;
+  mask-image:radial-gradient(ellipse,#000,transparent 80%);
+}
+.party-decor i{
+  position:absolute;
+  width:clamp(10px,3.7vw,25px);
+  aspect-ratio:1;
+  background:#ffe3b7;
+  clip-path:polygon(50% 0,58% 40%,100% 50%,58% 59%,50% 100%,41% 59%,0 50%,41% 41%);
+  animation:party-twinkle 3.5s ease-in-out infinite alternate;
+}
+.party-decor i:nth-child(1){top:17%;left:18%}
+.party-decor i:nth-child(2){top:27%;right:17%;animation-delay:-1.4s}
+.party-decor i:nth-child(3){top:55%;left:12%;animation-delay:-.7s}
+.party-decor i:nth-child(4){top:70%;right:13%;animation-delay:-2s}
+.party-decor i:nth-child(5){top:77%;left:23%;animation-delay:-1.9s}
+.party-decor i:nth-child(6){top:49%;right:21%;animation-delay:-.4s}
+.birthday-cake{
+  position:relative;
   display:grid;
   justify-items:center;
-  align-content:center;
-  gap:clamp(11px,2.8dvh,23px);
-  width:min(calc(100% - 44px),465px);
-  min-height:min(65dvh,525px);
-  padding:clamp(22px,5dvh,44px) 28px;
-  border:1px solid #aa704d;
-  border-radius:7px 21px 21px 7px;
-  background:linear-gradient(90deg,#1a0c142e 0 8px,#b1766b4a 9px 10px,#220e1c44 11px 14px,transparent 15px),
-    radial-gradient(ellipse at 50% 23%,#632b3a,#3b1928 65%,#291320);
-  box-shadow:5px 4px 0 -1px #b68556,9px 7px 0 -4px #e5c18c,0 24px 54px #050308ad,inset 0 0 43px #1f11156e;
+  align-items:end;
+  width:clamp(160px,59vw,300px);
+  aspect-ratio:1.45;
+  margin:clamp(16px,5dvh,48px) auto 13px;
+  filter:drop-shadow(0 20px 25px #3216327a);
 }
-.book-cover::before,.book-cover::after{
+.cake-tier,.cake-plate,.cake-candles{position:absolute}
+.cake-tier{
+  border-radius:15px 15px 20px 20px / 11px 11px 12px 12px;
+  background:
+    radial-gradient(ellipse 12px 10px at 12px 0,#fff1de 97%,transparent) 0 0 / 24px 16px repeat-x,
+    linear-gradient(to bottom,#fff1de 0 10%,transparent 10% 78%,#af456055 100%),
+    linear-gradient(110deg,#f5aec0,#e47ea2 80%);
+  box-shadow:inset 0 -4px 0 #8c395b36,inset 0 2px 0 #ffffff9a;
+}
+.cake-tier-top{width:68%;height:27%;bottom:44%;z-index:2}
+.cake-tier-bottom{width:94%;height:36%;bottom:12%;z-index:1}
+.cake-plate{
+  width:104%;
+  height:14%;
+  bottom:5%;
+  border-radius:50%;
+  background:linear-gradient(180deg,#fff1e7,#d1a1c4 82%);
+  box-shadow:0 4px #9f6d9d;
+}
+.cake-candles{
+  z-index:3;
+  display:flex;
+  align-items:flex-end;
+  gap:clamp(14px,5.5vw,24px);
+  height:23%;
+  bottom:69%;
+}
+.cake-candles i{
+  position:relative;
+  display:block;
+  width:clamp(5px,2.2vw,10px);
+  height:82%;
+  border-radius:3px 3px 1px 1px;
+  background:repeating-linear-gradient(145deg,#fff3df 0 5px,#c58ed0 5px 9px);
+}
+.cake-candles i:nth-child(2){
+  height:100%;
+  background:repeating-linear-gradient(145deg,#fff3df 0 5px,#ec8eb0 5px 9px);
+}
+.cake-candles i::before{
   content:"";
   position:absolute;
-  z-index:-1;
-  pointer-events:none;
-  border:1px solid #c99d635f;
-  border-radius:4px 14px 14px 4px;
+  left:50%;
+  bottom:100%;
+  width:clamp(9px,3vw,14px);
+  height:clamp(13px,4.4vw,23px);
+  border-radius:55% 45% 53% 47% / 70% 70% 30% 30%;
+  background:radial-gradient(ellipse at 55% 75%,#fff9e1,#ffd27d 65%,#ffa666);
+  box-shadow:0 0 17px 5px #ffbd68a8;
+  transform:translateX(-50%);
+  transform-origin:bottom;
+  animation:candle-flicker 1.3s ease-in-out infinite alternate;
 }
-.book-cover::before{inset:13px 13px 13px 20px}
-.book-cover::after{inset:18px 18px 18px 25px;border-color:#edc98e40}
-.cover-ornament{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:#eccb92;
-  font-size:1.2rem;
-  line-height:1;
+.cake-candles i:nth-child(2)::before{animation-delay:-.5s}
+.cake-candles i:nth-child(3)::before{animation-delay:-.8s}
+.party-blown .cake-candles i::before{opacity:0;animation:none;transition:opacity .14s}
+.novel .party-opening .action.primary{
+  min-height:51px;
+  margin:4px auto 0;
+  padding:12px 32px;
+  background:#ffdfec;
+  color:#502543;
+  box-shadow:0 3px 0 #dca4c4,0 12px 35px #3a173a6b;
 }
-.cover-ornament::before,.cover-ornament::after{
-  content:"";
-  width:34px;
-  height:1px;
-  background:linear-gradient(90deg,transparent,#eccb92);
-}
-.cover-ornament::after{transform:scaleX(-1)}
-.novel .book-cover .intro-title{
-  margin:0;
-  color:#fff2dc;
-  font-family:"Playfair Display",Georgia,serif!important;
-  font-size:clamp(2.65rem,11vw,5.65rem)!important;
-  font-weight:400!important;
-  line-height:.98!important;
-  letter-spacing:-.07em!important;
-}
-.novel .book-cover .intro-title span{
-  margin-top:.15em;
-  color:#efc483;
-  letter-spacing:-.07em;
-}
-.book-cover .cover-note{color:#efd2bc;margin:0}
-.novel .book-cover .action.primary{
-  min-height:49px;
-  margin:4px 0 0;
-  background:#f4d8a8;
-  color:#3a1b26;
-  box-shadow:0 5px 18px #170e1966;
-}
+.novel .party-opening .action.primary:hover{background:#fff0f7}
 .wish{
-  background:radial-gradient(ellipse at 45% 38%,#795142,#392737 75%,#242131);
+  background:radial-gradient(ellipse at 50% 18%,#a35c7d,#62345d 58%,#2d223d);
 }
 .wish .content{
-  width:min(calc(100% - 36px),640px);
-  padding:clamp(20px,4vw,38px);
-  border:1px solid #ffe6c6;
-  border-radius:7px 7px 22px 7px;
-  background:linear-gradient(145deg,#fff0db,#eed9b9);
-  color:#3c2730;
-  box-shadow:0 5px 0 -1px #c6a17d,0 24px 60px #1a11198c;
-  scrollbar-color:#956759 #f3dfc1;
+  width:min(calc(100% - 32px),650px);
+  padding:clamp(16px,4vw,34px);
+  background:linear-gradient(145deg,#4d2449df,#361f3edc);
+  border:1px solid #f1b4d257;
+  border-radius:25px;
+  box-shadow:0 18px 42px #26142b64,inset 0 1px #ffdcee27;
 }
-.wish .title{margin:0 auto 14px;color:#632b3d;text-wrap:balance}
-.wish .copy{text-align:left;color:#443037}
+.wish .title{margin-top:0;color:#ffc7db;text-wrap:balance}
+.wish .copy{text-align:left;color:#fff1eb}
 .wish .action{
+  margin-top:14px;
   min-height:48px;
-  margin-top:17px;
-  color:#fff0da;
-  background:#652f40;
-  border-color:#652f40;
-}
-.wish .action:focus-visible{outline-color:#652f40}
-.fight .choice{
-  background:#3c2632;
-  border-color:#f1c39d77;
+  background:#ffd9e8;
+  border:1px solid #ffd9e8;
+  color:#512542;
   font-weight:700;
-}
-.fight .choice:hover{background:#573845}
-.secret .content{padding-inline:clamp(14px,4vw,35px)}
-.secret .whisper{color:#f4d5a0}
-.istanbul .glass{
-  background:linear-gradient(135deg,#171d38ed,#202a45d9);
-  border-color:#efcf986b;
-  box-shadow:0 18px 50px #0813279e,inset 0 0 0 4px #efd7af12;
-}
-.istanbul .quote-stage{padding-block:7px}
-.song{
-  background:radial-gradient(ellipse at 50% 39%,#353359,#19192e 61%,#0d111e);
 }
 .song .record{
-  background:repeating-radial-gradient(circle,#111420 0 4px,#3e3a4f 5px 6px,#191927 7px 10px);
-  border-color:#0c101b;
-  box-shadow:0 0 0 1px #cabbef70,0 0 0 9px #cfbafa12,0 18px 45px #050710a1;
+  box-shadow:0 0 0 1px #e6bbec7d,0 0 0 8px #edbbef18,0 16px 70px #1b132a9c;
 }
-.song #play{
-  min-height:48px;
-  background:#eaddf7;
-  color:#2c2443;
-  border-color:#eaddf7;
-  font-weight:700;
+#birthday-confetti{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:38;
 }
-@media(max-width:600px){
-  .wish .content{padding:19px 17px 18px}
-  .wish .title{font-size:clamp(1.85rem,8.2vw,2.85rem)}
-  .wish .copy{font-size:clamp(.95rem,4.05vw,1.075rem);line-height:1.5}
-  .wish .action{margin-top:13px}
+#birthday-confetti:empty{display:none}
+#birthday-confetti i{
+  position:absolute;
+  left:calc(50% + var(--start));
+  top:53%;
+  width:7px;
+  height:11px;
+  border-radius:2px;
+  background:var(--color);
+  animation:party-confetti 1.2s cubic-bezier(.13,.58,.42,1) var(--delay) both;
 }
-@media(max-width:600px) and (max-height:620px){
-  .novel .book-cover{min-height:min(73dvh,410px);gap:12px;padding-block:21px}
-  .wish .content{padding-top:15px;padding-bottom:14px}
+#birthday-confetti i:nth-child(3n){width:6px;height:6px;border-radius:50%}
+@keyframes party-confetti{
+  0%{opacity:0;transform:translate(0,0) rotate(0)}
+  12%{opacity:1}
+  57%{opacity:1;transform:translate(var(--x),var(--y)) rotate(var(--turn))}
+  100%{opacity:0;transform:translate(var(--end-x),var(--end-y)) rotate(calc(var(--turn) + 130deg))}
+}
+@keyframes party-twinkle{from{opacity:.26;transform:scale(.75)}to{opacity:.95;transform:scale(1.12)}}
+@keyframes candle-flicker{from{transform:translateX(-50%) scale(.93,1.04) rotate(-5deg)}to{transform:translateX(-50%) scale(1.08,.89) rotate(5deg)}}
+@media(max-height:610px){
+  .novel .party-opening .intro-title{font-size:clamp(2.3rem,9vw,3.5rem)!important}
+  .birthday-cake{width:clamp(144px,48vw,210px);margin:17px auto 10px}
+  .wish .content{padding-block:13px}
   .wish .title{margin-bottom:9px}
+}
+@media(prefers-reduced-motion:reduce){
+  .party-decor i,.cake-candles i::before{animation:none!important}
 }
 
 </style>
@@ -375,12 +424,19 @@
 <body>
 <div id="app">
 <header class="topbar"><span>hmmmm <span aria-hidden="true">✦</span></span><span id="count">01 / 10</span></header>
-<section class="scene novel active" data-index="0" aria-label="A strange beginning"><div class="orbit"></div><div class="openbook" aria-hidden="true">❧</div><div class="content book-cover enter">
-<div class="cover-ornament" aria-hidden="true"><span>✦</span></div>
+<section class="scene novel active" data-index="0" aria-label="Birthday surprise">
+<div class="party-decor" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="content party-opening enter">
 <h1 class="hero intro-title">Marah <span>Jamela?</span></h1>
-<div class="fine cover-note">hmmmm…</div>
-<button class="action primary next">aage dekho →</button>
-</div></section>
+<div class="birthday-cake" aria-hidden="true">
+  <div class="cake-candles"><i></i><i></i><i></i></div>
+  <div class="cake-tier cake-tier-top"></div>
+  <div class="cake-tier cake-tier-bottom"></div>
+  <div class="cake-plate"></div>
+</div>
+<button class="action primary" id="start-birthday" type="button">aage dekho →</button>
+</div>
+</section>
 <section class="scene wish" data-index="1" aria-label="Birthday wishes"><div class="content"><h2 class="serif title">madem jii hmmm...</h2><div class="copy">aaj ka din its 22 11 aap ka birthday so HBD maybe hehe just kidding happy birthday mahrani saa
 
 i hope aap ke sare kwahishat poore ho allah aap ko khushiya de and aap ki hifazat karen and yeah aap ko ache kamo ki tofeeq de and ghalat chizo se door rakhe aallah aap ki aims achive karen and jo parai kar rahi ho i wish aap ko iss main kamyab hota huwa dekhun
@@ -426,14 +482,46 @@ but why kon ghalat hota hain</div><div class="choice-row"><button class="choice"
 <button class="action next">acha last cheez →</button></div></section>
 <section class="scene song" data-index="9" aria-label="A voice note for Arshi"><div class="content"><h2 class="serif title">for you, betu jii.</h2><div class="record paused" id="record" aria-hidden="true"></div><div class="fine">a little voice note for you.</div><audio id="ambient-soundtrack" src="assets/kendine-iyi-bak.mp3" preload="auto" loop></audio><audio id="audio" preload="none" src="assets/arshi-birthday-voice-note.mp3"></audio><button class="action" id="play">play my voice note</button><div class="fine" id="song-message" role="status" aria-live="polite"></div><button class="action" id="restart">phir se shuru? ↺</button></div></section>
 <nav class="progress" id="progress" aria-label="Story progress"></nav>
+<div id="birthday-confetti" aria-hidden="true"></div>
 </div>
 <script>
 (()=>{"use strict";
 const scenes=[...document.querySelectorAll(".scene")],progress=document.querySelector("#progress"),count=document.querySelector("#count");let current=0,timer=null,muted=true,audioCtx;
 scenes.forEach((_,i)=>{const dot=document.createElement("span");dot.className="dot"+(i===0?" on":"");progress.append(dot)});
 function beep(){if(muted)return;try{audioCtx ||= new(window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(audioCtx.destination);o.type="sine";o.frequency.setValueAtTime(440,audioCtx.currentTime);o.frequency.exponentialRampToValueAtTime(660,audioCtx.currentTime+.13);g.gain.setValueAtTime(.015,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.17);o.start();o.stop(audioCtx.currentTime+.18)}catch(e){}}
-function go(n){clearTimeout(timer);if(n<0||n>=scenes.length)return;const prev=scenes[current];prev.classList.remove("active");prev.querySelector(".content")?.classList.remove("enter");current=n;scenes[current].classList.add("active");const c=scenes[current].querySelector(".content");c?.scrollTo(0,0);void c?.offsetWidth;c?.classList.add("enter");count.textContent=String(current+1).padStart(2,"0")+" / "+String(scenes.length).padStart(2,"0");[...progress.children].forEach((x,i)=>x.classList.toggle("on",i===current));beep();if(n===3)timer=setTimeout(()=>go(4),2900);if(n!==9)document.querySelector("#audio").pause()}
+function go(n){clearTimeout(timer);if(n<0||n>=scenes.length)return;if(n===0)scenes[0].classList.remove("party-blown");const prev=scenes[current];prev.classList.remove("active");prev.querySelector(".content")?.classList.remove("enter");current=n;scenes[current].classList.add("active");const c=scenes[current].querySelector(".content");c?.scrollTo(0,0);void c?.offsetWidth;c?.classList.add("enter");count.textContent=String(current+1).padStart(2,"0")+" / "+String(scenes.length).padStart(2,"0");[...progress.children].forEach((x,i)=>x.classList.toggle("on",i===current));beep();if(n===3)timer=setTimeout(()=>go(4),2900);if(n!==9)document.querySelector("#audio").pause()}
 document.querySelectorAll(".next").forEach(b=>b.addEventListener("click",()=>go(current+1)));
+const startBirthday = document.querySelector("#start-birthday");
+const confetti = document.querySelector("#birthday-confetti");
+const openingScene = startBirthday.closest(".scene");
+startBirthday.addEventListener("click", () => {
+  if (openingScene.classList.contains("party-blown")) return;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    go(1);
+    return;
+  }
+
+  openingScene.classList.add("party-blown");
+  const colors = ["#ffb1cf", "#ffe4a1", "#e1b0fb", "#ffd8e9", "#cfe6ff"];
+  const pieces = Array.from({length:36}, (_, index) => {
+    const piece = document.createElement("i");
+    const direction = index % 2 === 0 ? -1 : 1;
+    const horizontal = direction * (7 + ((index * 13) % 40));
+    const rise = 13 + ((index * 7) % 38);
+    piece.style.setProperty("--color", colors[index % colors.length]);
+    piece.style.setProperty("--start", (index % 7 - 3) * 5 + "px");
+    piece.style.setProperty("--x", horizontal + "vw");
+    piece.style.setProperty("--y", -rise + "vh");
+    piece.style.setProperty("--end-x", horizontal * 1.22 + "vw");
+    piece.style.setProperty("--end-y", 33 - rise * .44 + "vh");
+    piece.style.setProperty("--turn", horizontal * 6 + "deg");
+    piece.style.setProperty("--delay", (index % 6) * 15 + "ms");
+    return piece;
+  });
+  confetti.replaceChildren(...pieces);
+  window.setTimeout(() => go(1), 490);
+  window.setTimeout(() => pieces.forEach(piece => piece.remove()), 1300);
+});
 document.querySelectorAll("[data-answer]").forEach(b=>b.addEventListener("click",()=>{document.querySelector("#fight-answer").textContent=b.dataset.answer==="you"?"wrong answer — bacha arp is always right":"sikh rahi ho beta arp cant be wrong haha";document.querySelector("#fight-next").classList.remove("hidden");beep()}));
 const translateButton = document.querySelector("#translate");
 const poemQuote = document.querySelector("#poem-quote");
